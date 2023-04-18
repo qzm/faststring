@@ -21,7 +21,7 @@ public:
     FastString(const char* str) {
         static_assert(N > 0, "N must be greater than 0");
         static_assert(N <= 64, "N must be less than or equal to 64");
-        memcpy(data_, str, N); // Copy the input string to the first N bytes of the character array
+        std::char_traits<char>::copy(data_, str, N); // Zero-copy the input string to the first N bytes of the character array
     }
 
     /**
